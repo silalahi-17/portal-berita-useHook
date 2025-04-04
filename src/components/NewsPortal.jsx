@@ -25,11 +25,11 @@ class NewsPortal extends Component {
 
   fetchNews = async (keyword) => {
     this.setState({ loading: true, error: null });
-    const apiKey = import.meta.env.VITE_NEWS_API_KEY
+    // const apiKey = import.meta.env.VITE_NEWS_API_KEY
     
     const url = keyword
-    ? `https://newsapi.org/v2/everything?q=${keyword}&language=id&apiKey=${apiKey}`
-    : `https://newsapi.org/v2/top-headlines?country=id&apiKey=${apiKey}`;
+    ? `/api/news?q=${keyword}`
+    : `/api/news`;
 
     try {
         const response = await axios.get(url);
