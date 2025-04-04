@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const API_KEY = "d9db42d95dee4da09199184d1ae4b109";
-
 class NewsPortal extends Component {
   constructor(props) {
     super(props);
@@ -27,13 +25,15 @@ class NewsPortal extends Component {
 
   fetchNews = async (keyword) => {
     this.setState({ loading: true, error: null });
+    const apiKey = import.meta.env.VITE_NEWS_API_KEY
+    
     const url = keyword
-      ? `https://newsapi.org/v2/everything?q=${keyword}&language=id&apiKey=${API_KEY}`
-      : `https://newsapi.org/v2/top-headlines?country=id&apiKey=${API_KEY}`;
+    ? `https://newsapi.org/v2/everything?q=${keyword}&language=id&apiKey=${apiKey}`
+    : `https://newsapi.org/v2/top-headlines?country=id&apiKey=${apiKey}`;
 
     try {
-      const response = await axios.get(url);
-      this.setState({ articles: response.data.articles, loading: false });
+        const response = await axios.get(url);
+        this.setState({ articles: response.data.articles, loading: false });
     } catch (err) {
         console.log ("Terjado kesalahan", err)
       this.setState({ error: "Gagal mengambil berita", loading: false });
