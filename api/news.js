@@ -2,8 +2,8 @@ export default async function handler(req, res) {
     const { searchParams } = new URL(req.url, `http://${req.headers.host}`);
     const query = searchParams.get("q") || "";
   
-    const apiKey = process.meta.env.NEWS_API_KEY;
-    console.log("API Key:", process.env.NEWS_API_KEY);
+    const apiKey = process.env.NEWS_API_KEY;
+    
   
     if (!apiKey) {
       return res.status(500).json({ error: "API Key tidak ditemukan" });
