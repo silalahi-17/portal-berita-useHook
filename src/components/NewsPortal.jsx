@@ -25,7 +25,7 @@ class NewsPortal extends Component {
 
   fetchNews = async (keyword) => {
     this.setState({ loading: true, error: null });
-    const apiKey = import.meta.env.NEWS_API_KEY
+    const apiKey = process.meta.env.NEWS_API_KEY
     
     const url = keyword
     ? `https://newsapi.org/v2/everything?q=${keyword}&language=id&apiKey=${apiKey}`
