@@ -2,7 +2,7 @@ export default async function handler(req, res) {
     const { searchParams } = new URL(req.url, `http://${req.headers.host}`);
     const query = searchParams.get("q") || "";
   
-    const apiKey = import.meta.env.VITE_NEWS_API_KEY;
+    const apiKey = process.meta.env.VITE_NEWS_API_KEY;
   
     if (!apiKey) {
       return res.status(500).json({ error: "API Key tidak ditemukan" });
