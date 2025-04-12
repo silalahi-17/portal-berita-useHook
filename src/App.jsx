@@ -1,5 +1,5 @@
 import React from "react";
-import NewsPortal from "./components/NewsPortal";
+import NewsPortal from "./components/portalBerita";
 
 function App() {
   return (
